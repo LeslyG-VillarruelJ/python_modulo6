@@ -1,3 +1,5 @@
+import datetime
+
 class Auto:
     def __init__(self, marca, modelo, año, kilometraje = 0):
         self.marca = marca
@@ -24,16 +26,40 @@ class Auto:
 
     def estado_auto(self):
         if self.kilometraje < 20000:
-            print("Estoy como nuevo")
+            return "Estoy como nuevo"
         elif self.kilometraje >= 20000 and self.kilometraje <= 100000:
-            print("Ya estoy usado")
+            return"Ya estoy usado"
         else:
-            print("¡Ya dejame descansar, por favor!")
+            return "¡Ya dejame descansar, por favor!"
+
+    # metodo de clase
+    @classmethod
+    def toyota(cls):
+        marca = "Toyota"
+        modelo = "Hilux"
+        año = datetime.datetime.now().year
+        return cls(marca, modelo, año)
     
-# Instanciación de un Auto
-# TEST
-auto1 = Auto("KIA", "RIO", 2021)
-auto1.mostrar_información()
-auto1.actualizar_kilometraje(1000)
-auto1.realizar_viaje(500)
-auto1.estado_auto()
+    @classmethod
+    def kia(cls):
+        marca = "KIA"
+        modelo = "Picanto"
+        año = 2024
+        return cls(marca, modelo, año)
+    
+    # Método estático
+    @staticmethod
+    def comparar_estado_auto(auto1, auto2):
+        if auto1.estado_auto == auto2.estado_auto:
+            return "Ambos autos están en condiciones similares"
+        else:
+            return "Los autos tienen condiciones diferentes"
+        
+    @staticmethod
+    def comparar_año_fabricacion(auto1, auto2):
+        if auto1.año == auto2.año:
+            return "Ambos autos han sido fabricados en el mismo años"
+        elif auto1.año > auto2.año:
+            return "El segundo auto ha sido fabricado antes que el primero"
+        elif auto1.año < auto2.año:
+            return "El primer auto ha sido fabricado antes que el segundo auto"

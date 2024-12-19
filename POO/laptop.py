@@ -12,10 +12,19 @@ class Laptop:
     
     def valor_descuento(self, descuento):
         return (self.costo * descuento)/100
-
-# Instanciamos la clase
-laptop_pepito = Laptop("lenovo", "17", 32)
-
-print(laptop_pepito.__dict__) # imprimir los valores del objeto
-print(laptop_pepito.valor_final())
-print(f"El valor del descuento es: {laptop_pepito.valor_descuento(10)}")
+    
+    # metodos estáticos - no necesito instanciar mi clase
+    @staticmethod
+    def comparar_costo(laptop1, laptop2):
+        if laptop1.costo == laptop2.costo:
+            return "Los costos son iguales"
+        else:
+            return "Los costos son diferentes"
+        
+    # métodos de clase - modifica la clase para crear un objeto en específico
+    @classmethod
+    def asus_laptop(cls, costo): # cls - referencia a la propia clase
+        marca = "Asus"
+        procesador = "i5"
+        memoria = 16
+        return cls(marca, procesador, memoria, costo)
