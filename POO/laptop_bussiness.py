@@ -7,6 +7,9 @@ class Laptop_Bussiness(Laptop):
         self.espacio_disco = espacio_disco
         self.duracion_bateria = duracion_bateria
 
+    def __str__(self):
+        return f"Marca: {self.marca}\nProcesador: {self.procesador}\nMemoria: {self.memoria}\nEspacio memoria: {self.espacio_disco}\nDuración batería: {self.duracion_bateria}\nPrecio: {self.costo}"
+
     def realizar_diagnostico_sistema(self):
         resultado_diagnostico = super().realizar_diagnostico_sistema()
         resultado_espacio_disco = "No hay espacio en disco, elimine algunos archivos" if self.espacio_disco == 0 else "OK"

@@ -2,6 +2,13 @@ from laptop import Laptop
 from laptop_gaming import Laptop_Gaming
 from laptop_bussiness import Laptop_Bussiness
 
+
+def imprimir_imforme(laptop):
+    informe = laptop.realizar_informe_uso()
+    for clave, valor in informe.items():
+        print(f"{clave}: {valor}")
+    print("\n")
+
 # Instanciamos la clase
 laptop_pepito = Laptop("lenovo", "17", 32)
 laptop_maria = Laptop("lenovo", "17", 32, 600)
@@ -27,3 +34,9 @@ print(laptop_juanito.realizar_diagnostico_sistema())
 # laptop_bussiness - duracion baterias en horas
 laptop_lesly = Laptop_Bussiness("MSI", "i7", 4, 0, 3)
 print(laptop_lesly.realizar_diagnostico_sistema())
+
+
+print("PEPITO: ")
+imprimir_imforme(laptop_pepito)
+print("JUANITO")
+imprimir_imforme(laptop_juanito)
